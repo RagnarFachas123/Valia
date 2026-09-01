@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Para Valia ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Georgia", serif;
+      background: #08080c;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Fondo */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 20%, #351520 0%, transparent 35%),
+        radial-gradient(circle at 20% 80%, #1b0d18 0%, transparent 35%),
+        #08080c;
+      z-index: -2;
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff6f91;
+      opacity: .5;
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: .5;
+      }
+
+      80% {
+        opacity: .5;
+      }
+
+      to {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 850px;
+      text-align: center;
+    }
+
+    /* PORTADA */
+
+    .hero {
+      text-align: center;
+    }
+
+    .tiny {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .big-heart {
+      font-size: 75px;
+      animation: heartbeat 1.8s infinite;
+      margin-bottom: 25px;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    h1 {
+      font-size: clamp(65px, 13vw, 130px);
+      font-weight: normal;
+      font-style: italic;
+      letter-spacing: -5px;
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+      color: #bbb;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 15px 30px;
+      border-radius: 50px;
+      background: #ff5f88;
+      color: white;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      transition: .3s;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(255, 95, 136, .3);
+    }
+
+    /* TARJETAS */
+
+    .card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(15px);
+      border-radius: 30px;
+      padding: 55px 45px;
+      box-shadow: 0 30px 100px rgba(0,0,0,.4);
+    }
+
+    .number {
+      font-family: Arial, sans-serif;
+      color: #ff7597;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(35px, 7vw, 65px);
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+
+    .text {
+      font-family: Arial, sans-serif;
+      color: #c7c7cf;
+      font-size: 17px;
+      line-height: 1.9;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .highlight {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* RECUERDOS */
+
+    .memories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .memory {
+      padding: 30px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .memory-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .memory h3 {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .memory p {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #999;
+    }
+
+    /* CARTA */
+
+    .letter {
+      text-align: left;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .letter p {
+      font-family: Arial, sans-serif;
+      color: #ccc;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .signature {
+      text-align: right;
+      font-family: Georgia, serif !important;
+      font-style: italic;
+      font-size: 23px !important;
+      color: white !important;
+      margin-top: 35px;
+    }
+
+    /* PREGUNTA */
+
+    .question {
+      min-height: 100vh;
+    }
+
+    .question h2 {
+      font-size: clamp(45px, 9vw, 85px);
+    }
+
+    .question-text {
+      font-family: Arial, sans-serif;
+      color: #aaa;
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .yes {
+      background: #ff5f88;
+    }
+
+    .yes2 {
+      background: #b83f68;
+    }
+
+    #answer {
+      display: none;
+      margin-top: 45px;
+      animation: appear .8s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #answer h3 {
+      font-size: clamp(35px, 7vw, 60px);
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    #answer p {
+      font-family: Arial, sans-serif;
+      color: #bbb;
+      margin-top: 15px;
+      line-height: 1.7;
+    }
+
+    .date {
+      margin-top: 25px;
+      color: #ff7597 !important;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #555;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 700px) {
+
+      .card {
+        padding: 40px 22px;
+      }
+
+      .memories {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .text {
+        font-size: 16px;
+      }
+
+      .letter p {
+        font-size: 15px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="background"></div>
+  <div class="hearts" id="hearts"></div>
+
+  <main>
+
+    <!-- PORTADA -->
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="big-heart">❤️</div>
+
+        <div class="tiny">
+          Algo que hice especialmente para ti
+        </div>
+
+        <h1>Valia</h1>
+
+        <p class="subtitle">
+          Hay cosas que prefiero decirte<br>
+          de una manera diferente.
+        </p>
+
+        <a href="#inicio" class="button">
+          Abre esto ❤️
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- INTRODUCCIÓN -->
+
+    <section id="inicio">
+
+      <div class="container">
+
+        <div class="card">
+
+          <div class="number">
+            01 — PARA TI
+          </div>
+
+          <h2>¿Sabes qué?</h2>
+
+          <p class="text">
+
+            No sé exactamente en qué momento pasó.
+
+            <br><br>
+
+            Pero entre nuestras conversaciones,
+            nuestras salidas, nuestras risas y todos
+            esos pequeños momentos que hemos compartido...
+
+            <br><br>
+
+            <span class="highlight">
+              te convertiste en alguien demasiado especial para mí.
+            </span>
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RECUERDOS -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="card">
+
+          <div class="number">
+            02 — NOSOTROS
+          </div>
+
+          <h2>Lo que me gusta de nosotros</h2>
+
+          <div class="memories">
+
+            <div class="memory">
+
+              <div class="memory-icon">😂</div>
+
+              <h3>Nuestras risas</h3>
+
+              <p>
+                Porque contigo hasta las cosas más tontas
+                terminan siendo buenos recuerdos.
+              </p>
+
+            </div>
+
+
+            <div class="memory">
+
+              <div class="memory-icon">❤️</div>
+
+              <h3>Estar contigo</h3>
+
+              <p>
+                Porque los momentos simples contigo
+                se sienten diferentes.
+              </p>
+
+            </div>
+
+
+            <div class="memory">
+
+              <div class="memory-icon">✨</div>
+
+              <h3>Lo que estamos viviendo</h3>
+
+              <p>
+                Y todo lo que todavía nos queda
+                por conocer y vivir juntos.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CARTA -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="card">
+
+          <div class="number">
+            03 — LO QUE QUERÍA DECIRTE
+          </div>
+
+          <h2>Una pequeña carta</h2>
+
+          <div class="letter">
+
+            <p>
+              Valia,
+            </p>
+
+            <p>
+              hice esta página porque soy programador
+              y pensé que, si quería decirte algo importante,
+              podía hacerlo de una manera que fuera un poquito
+              más yo.
+            </p>
+
+            <p>
+              Me gusta compartir tiempo contigo.
+              Me gusta hablar contigo, reírme contigo
+              y descubrir poco a poco todas esas cosas
+              que te hacen ser tú.
+            </p>
+
+            <p>
+              No quiero hacer de esto algo complicado.
+              Solo quiero ser sincero contigo:
+              <span class="highlight">
+                me gustas mucho y quiero seguir construyendo
+                algo bonito contigo.
+              </span>
+            </p>
+
+            <p>
+              Y por eso hice todo esto.
+            </p>
+
+            <p class="signature">
+              — Patrick ❤️
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PREGUNTA FINAL -->
+
+    <section class="question">
+
+      <div class="container">
+
+        <div class="card">
+
+          <div class="number">
+            04 — Y AHORA SÍ...
+          </div>
+
+          <div class="big-heart">
+            💐
+          </div>
+
+          <h2>
+            Valia...
+          </h2>
+
+          <p class="question-text">
+            Después de todo esto, solo me queda preguntarte
+            una cosa.
+          </p>
+
+          <h2>
+            ¿Quieres ser mi novia?
+          </h2>
+
+          <div class="choices">
+
+            <button class="button yes" onclick="sayYes()">
+              Sí ❤️
+            </button>
+
+            <button class="button yes2" onclick="sayYes()">
+              Obviamente 😭
+            </button>
+
+          </div>
+
+
+          <div id="answer">
+
+            <h3>
+              Entonces... ❤️
+            </h3>
+
+            <p>
+              oficialmente comienza una nueva historia.
+            </p>
+
+            <p class="date">
+              06.09.2026 — Huanano
+            </p>
+
+            <p>
+              Nuestra primera aventura oficial.
+              ✨
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    Hecho con código, tiempo y mucho cariño. ❤️
+  </footer>
+
+
+  <script>
+
+    /* CORAZONES */
+
+    const heartContainer =
+      document.getElementById("hearts");
+
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+      heart.className = "heart";
+
+      heart.innerHTML = "♥";
+
+      heart.style.left =
+        Math.random() * 100 + "%";
+
+      heart.style.fontSize =
+        (Math.random() * 18 + 8) + "px";
+
+      heart.style.animationDuration =
+        (Math.random() * 5 + 6) + "s";
+
+      heart.style.animationDelay =
+        Math.random() * 5 + "s";
+
+      heartContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 12000);
+
+    }
+
+    setInterval(createHeart, 700);
+
+
+    /* RESPUESTA */
+
+    function sayYes() {
+
+      const answer =
+        document.getElementById("answer");
+
+      answer.style.display = "block";
+
+      for(let i = 0; i < 30; i++) {
+
+        setTimeout(() => {
+
+          createHeart();
+
+        }, i * 80);
+
+      }
+
+      answer.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
